@@ -1,42 +1,42 @@
 const http = require("http");
 const express = require("express");
 const socketIO = require("socket.io");
-const bodyParser = require("body-parser");
-const cors = require("cors");
+// const bodyParser = require("body-parser");
+ const cors = require("cors");
 require('dotenv').config()
-const sendingBlue = require("./service/sendinblue");
+//const sendingBlue = require("./service/sendinblue");
 const socketIOFunction = require("./KYC/kyc");
 const createWebSocketServer = require("./chatbot/live");
 
 const app = express();
 const server = http.createServer(app);
 const io = socketIO(server);
-const expressPort = process.env.expressPort;
+// const expressPort = process.env.expressPort;
 // const socketIOPort = process.env.expressPort;
 const webSocketPort = process.env.webSocketPort;
 
-app.use(cors());
-app.use(bodyParser.json());
+// app.use(cors());
+// app.use(bodyParser.json());
 
 // Express Server
-app.get("/", (req, res) => {
-  res.send("Home Page");
-});
+// app.get("/", (req, res) => {
+//   res.send("Home Page");
+// });
 
-app.post("/sendEmail", async (req, res) => {
-  try {
-    await sendingBlue.sendMail();
-    console.log("Email sent");
-    res.sendStatus(200);
-  } catch (error) {
-    console.error("Error sending email:", error);
-    res.status(500).send("Error sending email");
-  }
-});
+// app.post("/sendEmail", async (req, res) => {
+//   try {
+//     await sendingBlue.sendMail();
+//     console.log("Email sent");
+//     res.sendStatus(200);
+//   } catch (error) {
+//     console.error("Error sending email:", error);
+//     res.status(500).send("Error sending email");
+//   }
+// });
 
-app.listen(expressPort, () => {
-  console.log(`Express server is running on port ${expressPort}`);
-});
+// app.listen(expressPort, () => {
+//   console.log(`Express server is running on port ${expressPort}`);
+// });
 
 // WebSocket Server
 socketIOFunction(io);
