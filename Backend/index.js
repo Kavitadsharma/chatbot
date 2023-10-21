@@ -15,6 +15,8 @@ const PORT = 8082;
 server.listen(PORT, () => {
   console.log("server is running on port" + PORT)
 })
+
+
 const app = express();
 const bodyParser = require("body-parser");
 app.use(cors());

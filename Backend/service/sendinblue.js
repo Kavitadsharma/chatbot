@@ -7,7 +7,7 @@ class sendingblue{
             port: 587,
             auth: {
               user: "kavitadsharma899107@gmail.com",
-              pass:"xsmtpsib-744136105ae18c9bbfb31faf68ba92bdddf4b3204cb38dcc469921edecf9eb8d-QX1gHbSEYhxD983c",
+              pass:"xsmtpsib-744136105ae18c9bbfb31faf68ba92bdddf4b3204cb38dcc469921edecf9eb8d-mKDY4OgcsxJUFL86",
             },
           })
     
