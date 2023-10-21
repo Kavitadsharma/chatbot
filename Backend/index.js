@@ -3,6 +3,7 @@ const express = require("express");
 const socketIO = require("socket.io");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+require('dotenv').config()
 const sendingBlue = require("./service/sendinblue");
 const socketIOFunction = require("./KYC/kyc");
 const createWebSocketServer = require("./chatbot/live");
@@ -10,9 +11,9 @@ const createWebSocketServer = require("./chatbot/live");
 const app = express();
 const server = http.createServer(app);
 const io = socketIO(server);
-const expressPort = 8080;
-const socketIOPort = 8081;
-const webSocketPort = 8080;
+const expressPort = process.env.expressPort;
+// const socketIOPort = process.env.expressPort;
+const webSocketPort = process.env.webSocketPort;
 
 app.use(cors());
 app.use(bodyParser.json());

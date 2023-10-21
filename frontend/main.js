@@ -9,7 +9,7 @@ const urlParams =  new URLSearchParams(window.location.search)
 const username = urlParams.get('username');
 const room = urlParams.get("room");
 
-const socket = io("http://localhost:8081/",{transports:["websocket"]});
+const socket = io("http://localhost:8080/",{transports:["websocket"]});
 function DispalyMessage(message) {
 let div = document.createElement("div");
     div.className = "card";
