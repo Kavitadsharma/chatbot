@@ -9,37 +9,21 @@ const socketIOFunction = require("./KYC/kyc");
 const createWebSocketServer = require("./chatbot/live");
 
 const app = express();
-const server = http.createServer(app);
+//const server = http.createServer(app);
+const server = http.createServer((req, res) => {
+  res.writeHead(200, { 'Content-Type': 'text/plain' });
+  res.end('WebSocket server running');
+});
 const io = socketIO(server);
-// const expressPort = process.env.expressPort;
-// const socketIOPort = process.env.expressPort;
+
 const webSocketPort = process.env.webSocketPort;
 
+
  app.use(cors());
-// app.use(bodyParser.json());
 
-// Express Server
-// app.get("/", (req, res) => {
-//   res.send("Home Page");
-// });
-
-// app.post("/sendEmail", async (req, res) => {
-//   try {
-//     await sendingBlue.sendMail();
-//     console.log("Email sent");
-//     res.sendStatus(200);
-//   } catch (error) {
-//     console.error("Error sending email:", error);
-//     res.status(500).send("Error sending email");
-//   }
-// });
-
-// app.listen(expressPort, () => {
-//   console.log(`Express server is running on port ${expressPort}`);
-// });
-
-// WebSocket Server
 socketIOFunction(io);
+
+const wss = createWebSocketServer(server);
 
 // HTTP Server
 server.listen(webSocketPort, () => {
