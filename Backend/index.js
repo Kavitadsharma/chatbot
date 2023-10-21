@@ -1,25 +1,23 @@
 const http = require("http");
 const express = require("express");
 const socketIO = require("socket.io");
-// const bodyParser = require("body-parser");
- const cors = require("cors");
-require('dotenv').config()
-//const sendingBlue = require("./service/sendinblue");
+const cors = require("cors");
+require('dotenv').config();
 const socketIOFunction = require("./KYC/kyc");
 const createWebSocketServer = require("./chatbot/live");
 
 const app = express();
-//const server = http.createServer(app);
-const server = http.createServer((req, res) => {
-  res.writeHead(200, { 'Content-Type': 'text/plain' });
-  res.end('WebSocket server running');
-});
-const io = socketIO(server);
+const server = http.createServer(app);
 
 const webSocketPort = process.env.webSocketPort;
 
+app.use(cors()); // Set up CORS for regular HTTP requests
 
- app.use(cors());
+const io = socketIO(server, {
+  cors: {
+    origin: "*:*", // You can restrict origins as needed
+  }
+});
 
 socketIOFunction(io);
 
@@ -29,6 +27,58 @@ const wss = createWebSocketServer(server);
 server.listen(webSocketPort, () => {
   console.log("WebSocket server is running on port " + webSocketPort);
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// const http = require("http");
+// const express = require("express");
+// const socketIO = require("socket.io");
+// // const bodyParser = require("body-parser");
+//  const cors = require("cors");
+// require('dotenv').config()
+// //const sendingBlue = require("./service/sendinblue");
+// const socketIOFunction = require("./KYC/kyc");
+// const createWebSocketServer = require("./chatbot/live");
+
+// const app = express();
+// //const server = http.createServer(app);
+// const server = http.createServer((req, res) => {
+//   res.writeHead(200, { 'Content-Type': 'text/plain' });
+//   res.end('WebSocket server running');
+// });
+// const io = socketIO(server);
+// io.origins("*:*")
+// const webSocketPort = process.env.webSocketPort;
+
+
+//  app.use(cors());
+
+// socketIOFunction(io);
+
+// const wss = createWebSocketServer(server);
+
+// // HTTP Server
+// server.listen(webSocketPort, () => {
+//   console.log("WebSocket server is running on port " + webSocketPort);
+// });
 
 
 
