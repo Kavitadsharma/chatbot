@@ -15,7 +15,7 @@ const io = socketIO(server);
 // const socketIOPort = process.env.expressPort;
 const webSocketPort = process.env.webSocketPort;
 
-// app.use(cors());
+ app.use(cors());
 // app.use(bodyParser.json());
 
 // Express Server
