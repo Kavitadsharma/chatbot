@@ -12,7 +12,7 @@ const server = http.createServer(app);
 const io = socketIO(server);
 const expressPort = 8080;
 const socketIOPort = 8081;
-const webSocketPort = 8082;
+const webSocketPort = 8080;
 
 app.use(cors());
 app.use(bodyParser.json());
